@@ -1,5 +1,7 @@
 //Vigenere Cipher(encryption)
+//Have to create the file(.txt) that you want to encrypt first 
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
 
 using namespace std;
@@ -26,47 +28,68 @@ char determine(char x)
 
 int main()
 {
-	char key[SIZE];
+	ofstream outFile;
+	ifstream inFile;
+	char key[SIZE], filename[SIZE];
 	char ch;
 	int L, i = 0, j = 0;
 
-	cout << "Please enter the key(LOWERCASE ENGLISH LETTERS ONLY): ";
+	cout << "Enter name of input file(.txt): ";  
+	cin.getline(filename, SIZE);
+	inFile.open(filename);    //Read the input file
+	if (!inFile.is_open())
+	{
+		cout << "Could not open the file " << filename << ".\n";
+		cout << "Programing terminating.\n";
+		exit(EXIT_FAILURE);
+	}
+	outFile.open("encryptionResult.txt");    //Read the output file
+
+	cout << "Please enter the key: ";
 	cin.getline(key, SIZE);
 	L = strLen(key);
 
-	cout << "Please enter the input(ENGLISH LETTERS OR NUMBERS): ";
-	cin.get(ch);
-	while (ch != '\n')    //Access to read data
+	inFile >> ch;
+	while (inFile.good())    //Access to read data
 	{
 		if (isdigit(ch))
 		{
 			ch = determine((ch + key[i % L] - '=' - '0') % 61);
-		        cout << char(ch);
+		        outFile << char(ch);
 			i++;
 		}
 		else if (isupper(ch))
 		{
 			ch = determine((ch + key[i % L] - '=' - '7') % 61);
-                        cout << char(ch);
+                        outFile << char(ch);
 			i++;
 		}
 		else if (islower(ch))
 		{
 			ch = determine((ch + key[i % L] - '=' - '=') % 61);
-			cout << char(ch);
+			outFile << char(ch);
 			i++;
 		}
 		else
 		{
 			j++;
 		}
-		cin.get(ch);
-	}
-	
-	if (i == 0)
-		cout << "\nNo data processed.\n";
+		inFile >> ch;
+	}    //Output will write in encryptionResult.txt 
+	if (inFile.eof())
+		cout << "End of file reached.\n";
+	else if (inFile.fail())
+		cout << "Input terminated by data mismatch.\n";
 	else
-		cout << "\nAbove is the result of encryption, " << i << " valid characters and " << j << " invalid characters input.\n";
+		cout << "Input terminated for unknown reason.\n";
 
+	if (i == 0)
+		cout << "No data processed.\n";
+	else
+		cout << "Above is the result of encryption, " << i << " valid characters and " << j << " invalid characters input.\n";
+
+	inFile.close();
+	outFile.close();
+	//system("pause");
 	return 0;
 }
