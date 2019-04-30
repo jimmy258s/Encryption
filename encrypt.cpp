@@ -54,19 +54,19 @@ int main()
 	{
 		if (isdigit(ch))
 		{
-			ch = determine((ch + key[i % L] - '=' - '0') % 61);
+			ch = determine(((ch - '0') + (key[i % L] - '=')) % 62);
 		        outFile << char(ch);
 			i++;
 		}
 		else if (isupper(ch))
 		{
-			ch = determine((ch + key[i % L] - '=' - '7') % 61);
+			ch = determine(((ch - '7') + (key[i % L] - '=')) % 62);
                         outFile << char(ch);
 			i++;
 		}
 		else if (islower(ch))
 		{
-			ch = determine((ch + key[i % L] - '=' - '=') % 61);
+			ch = determine(((ch - '=') + (key[i % L] - '=')) % 62);
 			outFile << char(ch);
 			i++;
 		}
@@ -86,7 +86,7 @@ int main()
 	if (i == 0)
 		cout << "No data processed.\n";
 	else
-		cout << "Above is the result of encryption.\n";
+		cout << "Above is the result of encryption.\n"; 
 
 	inFile.close();
 	outFile.close();

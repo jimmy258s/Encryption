@@ -54,19 +54,19 @@ int main()
 	{
 		if (isdigit(ch))
 		{
-			ch = determine((ch - key[i % L] - '=' - '0' + 183) % 61);
+			ch = determine(((ch - '0') - (key[i % L] - '=') + 62) % 62);
 		        outFile << char(ch);
 			i++;
 		}
 		else if (isupper(ch))
 		{
-			ch = determine((ch - key[i % L] - '=' - '7' + 183) % 61);
+			ch = determine(((ch - '7') - (key[i % L] - '=') + 62) % 62);
                         outFile << char(ch);
 			i++;
 		}
 		else if (islower(ch))
 		{
-			ch = determine((ch + key[i % L] - '=' - '=' + 183) % 61);
+			ch = determine(((ch - '=') - (key[i % L] - '=') + 62) % 62);
 			outFile << char(ch);
 			i++;
 		}
