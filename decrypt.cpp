@@ -32,7 +32,7 @@ int main()
 	ifstream inFile;
 	char key[SIZE], filename[SIZE];
 	char ch;
-	int L, i = 0, j = 0;
+	int L, i = 0;
 
 	cout << "Enter name of input file: ";  
 	cin.getline(filename, SIZE);
@@ -72,7 +72,7 @@ int main()
 		}
 		else
 		{
-			j++;
+			outFile << char(ch);
 		}
 		inFile >> ch;
 	}    //Output will write in decryptResult.txt 
@@ -86,7 +86,7 @@ int main()
 	if (i == 0)
 		cout << "No data processed.\n";
 	else
-		cout << "Above is the result of decryption, " << i << " valid characters and " << j << " invalid characters input.\n";
+		cout << "Above is the result of decryption.\n";
 
 	inFile.close();
 	outFile.close();
