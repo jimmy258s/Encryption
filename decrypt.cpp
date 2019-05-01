@@ -43,7 +43,7 @@ int main()
 		cout << "Programing terminating.\n";
 		exit(EXIT_FAILURE);
 	}
-	outFile.open("decryptionResult.txt");    //Read the output file
+	outFile.open("decryptResult.txt");    //Read the output file
 
 	cout << "Please enter the key: ";
 	cin.getline(key, SIZE);
@@ -75,7 +75,7 @@ int main()
 			outFile << char(ch);
 		}
 		inFile >> ch;
-	}    //Output will write in decryptResult.txt 
+	}    //Output will be saved in decryptResult.txt 
 	if (inFile.eof())
 		cout << "End of file reached.\n";
 	else if (inFile.fail())
@@ -86,7 +86,7 @@ int main()
 	if (i == 0)
 		cout << "No data processed.\n";
 	else
-		cout << "Above is the result of decryption.\n";
+		cout << "The output data has been saved to decryptResult.txt.\n";
 
 	inFile.close();
 	outFile.close();
