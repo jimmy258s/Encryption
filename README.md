@@ -17,7 +17,7 @@
    3. Use vim to open encrypt.cpp.
    >  $ vim encrypt.cpp
    4. Compile encrypt.cpp and execute that.
-   >  $ g++ encrypt.cpp -o encrypt -Wall
+   >  $ g++ encrypt.cpp -o encrypt -Wall<br>
    >  $ ./encrypt
    5. Enter the input filename, remember to add .txt.
    6. Enter the key you want to use to enpcrypt the file.
@@ -26,7 +26,7 @@
    1. Use vim to open decrypt.cpp.
    >  $ vim decrypt.cpp
    2. Compile decrypt.cpp and execute that.
-   >  $ g++ decrypt.cpp -o decrypt -Wall
+   >  $ g++ decrypt.cpp -o decrypt -Wall<br>
    >  $ ./decrypt
    5. Enter the input filename(encryptResult.txt), remember to add .txt.
    6. Enter the key you use to enpcrypt the file.
